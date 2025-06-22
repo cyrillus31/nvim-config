@@ -1,7 +1,10 @@
-print("balding neovim!")
+print("BALDING NEOVIM!")
 
 require("config.lazy")
 
+vim.opt.shiftwidth = 4
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 
@@ -12,3 +15,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+
+-- =========Testing ground============ -- 
