@@ -18,7 +18,7 @@ return {
       },
     },
     config = function()
-      vim.lsp.enable("lua_ls")
+      -- vim.lsp.enable("lua_ls")
       require('lspconfig').lua_ls.setup{
 	settings = {
 	  Lua = {
