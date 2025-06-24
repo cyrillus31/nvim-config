@@ -1,4 +1,4 @@
-print("BALDING NEOVIM!")
+print("!!!!!--BALDING NEOVIM--!!!!!")
 
 require("config.lazy")
 
