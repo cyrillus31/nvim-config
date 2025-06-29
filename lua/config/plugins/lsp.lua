@@ -20,8 +20,8 @@ return {
     config = function()
       -- NOTE: the following method is recommended but I don't know to how to configure setup then.
       -- vim.lsp.enable("lua_ls")
-      require('lspconfig').lua_ls.setup{
       -- vim.lsp.config("lua_la", {
+      require('lspconfig').lua_ls.setup{
 	cmd = { "/home/kfedtsov/.config/lua-language-server/bin/lua-language-server" },
 	settings = {
 	  Lua = {
@@ -29,7 +29,7 @@ return {
 	      version = "LuaJIT"
 	    }
 	  }
-	}
+	},
       }
     end,
   },

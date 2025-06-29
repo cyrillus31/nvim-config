@@ -3,6 +3,9 @@ print("!!!!!--BALDING NEOVIM--!!!!!")
 require("config.options")
 require("config.lazy")
 
+-- Turn on virtual text (default = false)
+vim.diagnostic.config({ virtual_text = true })
+
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Keybinds to make split navigation easier.
