@@ -7,6 +7,11 @@ alias nvim='NVIM_APPNAME="nvim-baldingbuilder" nvim'
 ```
 
 
+### Dependencies
+##### FZF:
+- ripgrep
+- fzf
+
 ### TODO
 ___
 - [ ] Quality of life keymaps + whichkey plugin (moving around splits, etc.)
