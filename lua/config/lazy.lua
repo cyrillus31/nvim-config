@@ -1,5 +1,3 @@
-print("!!! This is from config/lazy.lua file")
-
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -28,8 +26,6 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
-		-- NOTE: theme
-		{ "folke/tokyonight.nvim", config = function() vim.cmd.colorscheme("tokyonight") end },
 		-- import your plugins
 		{ import = "plugins" },
 	},
@@ -37,7 +33,7 @@ require("lazy").setup({
 	-- colorscheme that will be used when installing plugins.
 	-- NOTE: commented out line below
 	-- install = { colorscheme = { "habamax" } },
+
 	-- automatically check for plugin updates
-	-- NOTE: commented out line below
-	-- checker = { enabled = true },
+	checker = { enabled = true },
 })
