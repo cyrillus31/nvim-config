@@ -6,11 +6,13 @@ My own NVIM config from ground up
 alias nvim='NVIM_APPNAME="nvim-baldingbuilder" nvim'
 ```
 
-
 ### Dependencies
 ##### FZF:
 - ripgrep
 - fzf
+
+### Lazy + LSP setup
+Lazy -> Mason -> mason-lspconfig -> ensure_installed
 
 ### TODO
 ___
@@ -65,49 +67,4 @@ ___
 
 
 
-# Neovim Key Combination Cheat Sheet
-
-## Key Notation
-
-- **Angle Brackets (`< >`)**: Used to denote special keys.
-  - Example: `<C-x>` means "Control + x".
-
-- **No Hyphen (`-`)**: Keys are written in sequence without hyphens.
-  - Example: `Space f` is written as `<Space>f`.
-
-## Common Key Combinations
-
-### Single Modifier Keys
-- **Control**: `<C-x>` (Control + x)
-- **Shift**: `<S-x>` (Shift + x)
-- **Alt**: `<A-x>` or `<M-x>` (Alt + x)
-
-### Function Keys
-- **F1 to F12**: `<F1>`, `<F2>`, ..., `<F12>`
-
-### Special Keys
-- **Escape**: `<Esc>`
-- **Tab**: `<Tab>`
-- **Enter**: `<CR>` (Carriage Return)
-- **Backspace**: `<BS>`
-- **Home**: `<Home>`
-- **End**: `<End>`
-- **Page Up**: `<PageUp>`
-- **Page Down**: `<PageDown>`
-
-### Combining Keys
-- **Control + Key**: `<C-a>`, `<C-b>`, etc.
-- **Shift + Key**: `<S-a>`, `<S-b>`, etc.
-- **Alt + Key**: `<A-a>`, `<A-b>`, etc.
-- **Multiple Keys**: 
-  - Example: `Ctrl + Shift + x` is `<C-S-x>`.
-
-### Chords
-- **Sequential Key Presses**: 
-  - Example: Pressing `Space` followed by `f` is `<Space>f`.
-
-## Summary of Notation
-- **Single Key**: `<KeyName>` (e.g., `<Esc>`, `<Tab>`)
-- **Modifier + Key**: `<Modifier-Key>` (e.g., `<C-x>`, `<S-x>`)
-- **Chords**: `<Modifier>Key` (e.g., `<Space>f`)
 
