@@ -1,6 +1,7 @@
 -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-statusline.md
 
-local default_active_config = function()
+-- You can find the original config in :help ministatusline
+local default_config = function()
 	if vim.bo.filetype == "NvimTree" then
 		return " "
 	end
@@ -41,7 +42,7 @@ return {
 						if vim.bo.filetype == "NvimTree" or vim.bo.filetype == "oil" then
 							return " "
 						end
-						return default_active_config()
+						return default_config()
 					end,
 					inactive = nil,
 				},
