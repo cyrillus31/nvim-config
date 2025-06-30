@@ -1,3 +1,7 @@
+# Custom
+**/*.bak
+**/_*
+
 # Compiled Lua sources
 luac.out
 
