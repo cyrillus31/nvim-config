@@ -2,9 +2,9 @@
 -- In config field add configuration from https://luals.github.io/wiki/configuration/
 -- Add "folke/lazydev.nvim" plugin so that LSP could see what 'vim' object in the lua code is.
 
+-- The following autocommands are used to highlight references of the
+-- word under your cursor when your cursor rests there for a little while.
 local function autocommands_setup(event)
-	-- The following two autocommands are used to highlight references of the
-	-- word under your cursor when your cursor rests there for a little while.
 	--    See `:help CursorHold` for information about when this is executed
 	--
 	-- When you move your cursor, the highlights will be cleared (the second autocommand).
@@ -24,10 +24,10 @@ local function autocommands_setup(event)
 		})
 
 		vim.api.nvim_create_autocmd('LspDetach', {
-			group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+			group = vim.api.nvim_create_augroup('lsp-detach', { clear = true }),
 			callback = function(event2)
 				vim.lsp.buf.clear_references()
-				vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+				vim.api.nvim_clear_autocmds { group = 'lsp-highlight', buffer = event2.buf }
 			end,
 		})
 	end
@@ -93,6 +93,9 @@ local function lsp_keymap_setup(event, client)
 end
 
 local dependencies = {
+	-- Telescope (used for go to definition maps and etc.)
+	{ 'nvim-telescope/telescope.nvim' },
+
 	-- lazydev
 	{
 		"folke/lazydev.nvim",
@@ -107,16 +110,16 @@ local dependencies = {
 	},
 
 	-- Mason
-	{ 'williamboman/mason.nvim', config = true },  -- NOTE: Must be loaded before dependants
+	{ 'williamboman/mason.nvim',           config = true }, -- NOTE: Must be loaded before dependants
 
-	-- Mason-lspconfig
-	'williamboman/mason-lspconfig.nvim',
+	-- Mason-lspconfig (should be loaded after 'mason.nvim')
+	{ 'williamboman/mason-lspconfig.nvim', dependencies = { "mason.nvim", "nvim-lspconfig" } },
 
 	-- TODO: remove maybe later if all works
 	-- 'WhoIsSethDaniel/mason-tool-installer.nvim', -- NOTE: not sure if this one is required
 
 	-- Fidget
-	{ 'j-hui/fidget.nvim',       opts = {} },
+	{ 'j-hui/fidget.nvim',                 opts = {} },
 }
 
 local function autoformat_on_save_setup(event, client)
@@ -134,12 +137,16 @@ local function autoformat_on_save_setup(event, client)
 	end
 end
 
+----------------------------------
+------------- RETURN -------------
+----------------------------------
 return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = dependencies,
 		config = function()
-			local lspconfig = require('lspconfig')
+			-- NOTE: lspconfig is not required since we are going to setup our LSPs with mason-lspconfig
+			-- local lspconfig = require('lspconfig')
 
 			-- TODO: if Mason doesn't set it up - uncomment the line below!
 			-- lspconfig.lua_ls.setup({})

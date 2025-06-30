@@ -4,6 +4,10 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
 
+-- Set to true if you have a Nerd Font installed and selected in the terminal
+-- vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
+
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 20
 
@@ -37,6 +41,16 @@ vim.opt.cursorline = true
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
--- Set to true if you have a Nerd Font installed and selected in the terminal
--- vim.g.have_nerd_font = false
-vim.g.have_nerd_font = true
+
+-- Decrease update time
+vim.opt.updatetime = 250
+
+-- Decrease mapped sequence wait time
+-- Displays which-key popup sooner
+vim.opt.timeoutlen = 10
+
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
