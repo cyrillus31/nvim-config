@@ -54,3 +54,6 @@ vim.opt.timeoutlen = 10
 --  and `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Save undo history
+vim.opt.undofile = true
