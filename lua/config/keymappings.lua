@@ -32,7 +32,7 @@ vim.keymap.set("n", "<S-A-j>", ":resize -1 <CR>")
 -- vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 vim.keymap.set("t", "<C-t>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-
 -- Functions
-vim.keymap.set("x", "A", "<Esc><Cmd>lua require('functions.text_manipulation').multiline_append()<CR>")
-vim.keymap.set("x", "I", "<Esc><Cmd>lua require('functions.text_manipulation').multiline_prepend()<CR>")
+local f = "require('functions.text_manipulation')"
+vim.keymap.set("x", "A", "<Esc><Cmd>lua " .. f .. ".multiline_append()<CR>")
+vim.keymap.set("x", "I", "<Esc><Cmd>lua " .. f .. ".multiline_prepend()<CR>")
