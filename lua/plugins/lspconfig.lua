@@ -120,8 +120,17 @@ local dependencies = {
 
 	-- Fidget
 	{ "j-hui/fidget.nvim", opts = {} },
+	{
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"williamboman/mason.nvim",
+			"nvimtools/none-ls.nvim",
+		},
+	},
 }
 
+-- Insted of this "conform.nvim" is used right now
 local function autoformat_on_save_setup(event, client)
 	-- Auto-format ("lint") on save.
 	-- Usually not needed if server supports "textDocument/willSaveWaitUntil".
@@ -147,17 +156,32 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = dependencies,
 		config = function()
-			-- NOTE: lspconfig is not required since we are going to setup our LSPs with mason-lspconfig
+			-- NOTE: if Mason doesn't set it up - uncomment the line below!
 			-- local lspconfig = require('lspconfig')
-
-			-- TODO: if Mason doesn't set it up - uncomment the line below!
 			-- lspconfig.lua_ls.setup({})
 
+			-- 'mason-lspconfig' is used to install language servers in Mason
+			-- You can configure your LSPs in LspAttach callback.
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls" },
+				ensure_installed = {
+					"lua_ls",
+					"gopls",
+					"pyright",
+					"clangd",
+				},
 			})
 
-			-- NOTE: format on save can also be achieved by 'stevearc/conform.nvim' plugin
+			-- 'mason-null-ls' is used to install formatters over Mason using 'null-ls' plugin
+			require("mason-null-ls").setup({
+				automatic_installation = true,
+				ensure_installed = {
+					"stylua",
+					"balck",
+					"isort",
+					"clang-format",
+				},
+			})
+
 			-- Code below is from ':help lsp'
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
