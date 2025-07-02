@@ -36,17 +36,16 @@ ___
         - [x] gopls (lsp)
     - [x] Python
         - [x] pyright (linter)
-    - [x] c
+    - [x] c / cpp
         - [x] clangd
     - [ ] Markdown
-    - [ ] cpp (?)
     - [ ] js/ts (?)
 - [x] nvim-lspconfig: Lua (Lua-LS), Go, Python, C, C++ (Optional: Markdown, JS, TS)
-    - [x] folke/lazydev.nvim
+    - [x] folke/lazydev.nvim (for knowledge of vim variables)
 - [x] Formatting (done by 'conform.nvim')
     - [x] On command (<space-f>)
     - [x] On save
-- [ ] Autocompletion (<C-x><C-o> works by default omni completion)
+- [x] Autocompletion (<C-x><C-o> works by default omni completion)
 - [x] [Telescope](https://github.com/nvim-telescope/telescope.nvim)
     - [x] Various searches + key maps
 - [ ] [Harpoon (v2)](https://github.com/ThePrimeagen/harpoon/tree/harpoon2)

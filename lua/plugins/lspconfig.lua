@@ -1,4 +1,5 @@
 -- Install "neovim/nvim-lspconfig" in the most straighforward way possible (https://github.com/neovim/nvim-lspconfig)
+print()
 -- In config field add configuration from https://luals.github.io/wiki/configuration/
 -- Add "folke/lazydev.nvim" plugin so that LSP could see what 'vim' object in the lua code is.
 
@@ -120,6 +121,8 @@ local dependencies = {
 
 	-- Fidget
 	{ "j-hui/fidget.nvim", opts = {} },
+
+	-- Is used to ensure install formatters (because 'mason-lspconfig' can't do that)
 	{
 		"jay-babu/mason-null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -163,6 +166,14 @@ return {
 			-- 'mason-lspconfig' is used to install language servers in Mason
 			-- You can configure your LSPs in LspAttach callback.
 			require("mason-lspconfig").setup({
+				ui = {
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗",
+					},
+				},
+				-- WARNING: if you want to add LSPs -> do it here!
 				ensure_installed = {
 					"lua_ls",
 					"gopls",
@@ -174,6 +185,8 @@ return {
 			-- 'mason-null-ls' is used to install formatters over Mason using 'null-ls' plugin
 			require("mason-null-ls").setup({
 				automatic_installation = true,
+				-- WARNING: if you want to add formatters -> do it here!
+				-- Which formatters are used is configured in 'conform.nvim'
 				ensure_installed = {
 					"stylua",
 					"black",
