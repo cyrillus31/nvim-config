@@ -57,6 +57,8 @@ ___
     - [x] NvimTree
     - [x] Neo-Tree [link](https://github.com/nvim-neo-tree/neo-tree.nvim)
 
+- [ ] DEBUGGING
+    - [ ]
 - [ ] Custom scripts
     - [x] Visual mode multiline append
     - [x] Visual mode multiline prepend (not ready yet)

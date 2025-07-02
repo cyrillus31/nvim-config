@@ -14,7 +14,7 @@ return {
 			},
 		},
 		opts = {
-			notify_on_error = false,
+			notify_on_error = true,
 			format_on_save = true,
 			-- format_on_save = function(bufnr)
 			--   -- Disable "format_on_save lsp_fallback" for languages that don't
@@ -29,13 +29,12 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
-				python = { "isort", "black" },
+				python = { "black", "isort" },
 				go = { "gofmt" },
 				c = { "clang-format" },
-				--
-				-- You can use a sub-list to tell conform to run *until* a formatter
-				-- is found.
-				javascript = { { "prettierd", "prettier" } },
+				cpp = { "clang-format" },
+				-- Conform will run the first available formatter
+				javascript = { "prettierd", "prettier", stop_after_first = true },
 			},
 		},
 	},
