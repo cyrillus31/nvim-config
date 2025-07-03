@@ -34,11 +34,14 @@ return {
 				nerd_font_variant = "mono",
 			},
 
-			-- NOTE: added this one myslef as did TJ
-			signature = { enabled = true },
+			-- NOTE: experimantal (https://cmp.saghen.dev/configuration/signature)
+			signature = { enabled = true, window = { border = "rounded", show_documentation = true } },
 
 			-- (Default) Only show the documentation popup when manually triggered
-			completion = { documentation = { auto_show = true } },
+			completion = {
+				menu = { border = "rounded" },
+				documentation = { auto_show = true, window = { border = "rounded" } },
+			},
 
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
