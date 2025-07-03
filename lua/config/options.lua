@@ -16,7 +16,7 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
@@ -33,14 +33,13 @@ nosplit: This is the default behavior, where no live preview is shown.
 split: This shows the live preview in a split window.
 screen: This shows the live preview in the current window.
 --]]
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- Highlight which line your cursor is on
 vim.opt.cursorline = true
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
-
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -53,7 +52,9 @@ vim.opt.timeoutlen = 10
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
+-- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.opt.listchars = { trail = "·", nbsp = "␣" }
 
 -- Save undo history
 vim.opt.undofile = true
