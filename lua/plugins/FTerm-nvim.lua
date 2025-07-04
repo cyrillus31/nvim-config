@@ -43,7 +43,7 @@ local default_opts_example = {
 		height = 0.8, -- Height of the terminal window
 		width = 0.8, -- Width of the terminal window
 		x = 0.5, -- X axis of the terminal window
-		y = 0.5, -- Y axis of the terminal window
+		y = 0.3, -- Y axis of the terminal window
 	},
 
 	---Replace instead of extend the current environment with `env`.
@@ -80,10 +80,10 @@ return {
 			require("FTerm").setup({
 				border = "rounded",
 				dimensions = {
-					height = 0.8,
-					width = 0.8,
-					x = 0.5,
-					y = 0.5,
+					height = 0.9, -- default 0.8
+					width = 0.7, -- default 0.8
+					x = 0.9, -- default 0.5
+					y = 0.3, -- default 0.5
 				},
 				-- Transparency
 				blend = 0,
