@@ -4,4 +4,4 @@ image="testing_neovim:fedora"
 
 docker build -t $image .
 
-docker run -it $image
+docker run --rm -it $image
