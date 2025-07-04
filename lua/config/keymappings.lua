@@ -30,9 +30,17 @@ vim.keymap.set("n", "<S-A-j>", ":resize -1 <CR>")
 -- This won"t work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 -- vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-vim.keymap.set("t", "<C-t>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+-- vim.keymap.set("t", "<C-t>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Functions
 local f = "require('functions.text_manipulation')"
 vim.keymap.set("x", "A", "<Esc><Cmd>lua " .. f .. ".multiline_append()<CR>")
 vim.keymap.set("x", "I", "<Esc><Cmd>lua " .. f .. ".multiline_prepend()<CR>")
+
+-- Tabs
+vim.keymap.set("n", "<Tab>", "<cmd> tabnext <CR>", { desc = "next tab" })
+vim.keymap.set("n", "<S-Tab>", "<cmd> tabprevious <CR>", { desc = "next tab" })
+
+-- Vim
+vim.keymap.set("n", "<leader>vr", ":bufdo e<CR>", { desc = "[R]eload all buffers (:bufdo e)" })
+vim.keymap.set("n", "<leader>vs", ":wa<CR>", { desc = "[S]ave all buffers (:wa)" })
