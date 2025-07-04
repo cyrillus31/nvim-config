@@ -10,6 +10,9 @@ alias nvim='NVIM_APPNAME="nvim-baldingbuilder" nvim'
 ##### FZF:
 - ripgrep
 - fzf
+- wget
+- unzip
+- npm
 
 ### Lazy + LSP setup
 Lazy -> Mason -> mason-lspconfig -> ensure_installed
@@ -28,8 +31,15 @@ ___
     - [ ] Optional: Theme manager?
 - [x] Lazy (Package Manager)
 - [x] Status Line (Lualine or Mini)
-- [x] MASON (LSP Manager)
+    - [x] [mini.statusline](https://github.com/echasnovski/mini.statusline)
+    - [x] [lualine](https://github.com/nvim-lualine/lualine.nvim)
+- [x] [Mason.nvim](https://github.com/mason-org/mason.nvim): LSP/DAP/Linter/Formatter package manager
+    - [x] [mason-lspconfig](https://github.com/mason-org/mason-lspconfig.nvim): automatically install and enable LSPs with Mason
+    - [x] [mason-null-ls](https://github.com/jay-babu/mason-null-ls.nvim): to just install formatters automatically via Mason (but configure with conform.nvim)
+    - [x] [mason-nvim-lint](https://github.com/mfussenegger/nvim-lint): to install and enable linters
+    - [x] [fidget.nvim](https://github.com/j-hui/fidget.nvim): for bottom right corner LSP status updates
     - [x] Lua
+        - [x] folke/lazydev.nvim (make LSP knowledgeable about global 'vim' variable and so on)
         - [x] lua_ls (lsp)
         - [x] stylua (formatter)
     - [x] Go
@@ -38,10 +48,8 @@ ___
         - [x] pyright (linter)
     - [x] c / cpp
         - [x] clangd
-    - [ ] Markdown
     - [ ] js/ts (?)
-- [x] nvim-lspconfig: Lua (Lua-LS), Go, Python, C, C++ (Optional: Markdown, JS, TS)
-    - [x] folke/lazydev.nvim (for knowledge of vim variables)
+- [x] [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): repo with basic default LSP configurations
 - [x] Formatting (done by 'conform.nvim')
     - [x] On command (<space-f>)
     - [x] On save
@@ -49,13 +57,14 @@ ___
 - [x] [Telescope](https://github.com/nvim-telescope/telescope.nvim)
     - [x] Various searches + key maps
 - [ ] [Harpoon (v2)](https://github.com/ThePrimeagen/harpoon/tree/harpoon2)
-- [ ] Cusom floating terminal + key maps
+- [ ] Floating terminal
+    - [ ] Custom floating terminal
     - [ ] Optional: [NvChad/nvterm](NvChad/nvterm)
 - [x] File tree manager
-    - [x] Oil
-    - [x] NvimTree
-    - [x] Neo-Tree [link](https://github.com/nvim-neo-tree/neo-tree.nvim)
-
+    - [x] [Oil](https://github.com/stevearc/oil.nvim)
+    - [x] [NvimTree](https://github.com/nvim-tree/nvim-tree.lua)
+    - [x] [Neo-Tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
+- [x] [Markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
 - [ ] DEBUGGING
     - [ ]
 - [ ] Custom scripts
@@ -66,7 +75,7 @@ ___
     - [x] vim.highlight.on_yank()
     - [x] autopairs [link](windwp/nvim-autopairs)
     - [ ] gitsigns
-    - [ ] indentline
+    - [x] indentline
     - [ ] lints
     - [ ] debug (?)
     - [x] whichkey setup

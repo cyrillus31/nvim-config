@@ -1,5 +1,4 @@
 -- Install "neovim/nvim-lspconfig" in the most straighforward way possible (https://github.com/neovim/nvim-lspconfig)
-print()
 -- In config field add configuration from https://luals.github.io/wiki/configuration/
 -- Add "folke/lazydev.nvim" plugin so that LSP could see what 'vim' object in the lua code is.
 
@@ -115,9 +114,6 @@ local dependencies = {
 
 	-- Mason-lspconfig (should be loaded after 'mason.nvim')
 	{ "williamboman/mason-lspconfig.nvim", dependencies = { "mason.nvim", "nvim-lspconfig" } },
-
-	-- TODO: remove maybe later if all works
-	-- 'WhoIsSethDaniel/mason-tool-installer.nvim', -- NOTE: not sure if this one is required
 
 	-- Fidget
 	{ "j-hui/fidget.nvim", opts = {} },
