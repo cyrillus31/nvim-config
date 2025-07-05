@@ -10,6 +10,7 @@ return {
 				-- char = "│",
 				tab_char = "│",
 			},
+			exclude = { filetypes = { "dashboard" } },
 		},
 	},
 }

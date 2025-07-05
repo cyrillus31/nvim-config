@@ -1,9 +1,10 @@
 -- Markdown-preview (with browser)
 -- https://github.com/iamcco/markdown-preview.nvim
 
--- install with yarn or npm
+-- WARN: install with yarn or npm
 return {
 	"iamcco/markdown-preview.nvim",
+	enabled = false,
 	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 	lazy = true,
 	build = "cd app && npm install",

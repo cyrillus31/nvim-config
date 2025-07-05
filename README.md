@@ -74,6 +74,10 @@ ___
 - [ ] Custom scripts
     - [x] Visual mode multiline append
     - [ ] Visual mode multiline prepend (not ready yet)
+- [x] Startup screen
+    - [x] [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
+    - [ ] Optional: [alpha-nvim](https://github.com/goolord/alpha-nvim)
+    - [ ] Optional: [startup-nvim](https://github.com/max397574/startup.nvim)
 
 - [ ] From kickstart.nvim
     - [x] vim.highlight.on_yank()
