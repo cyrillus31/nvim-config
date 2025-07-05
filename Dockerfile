@@ -5,6 +5,9 @@ RUN dnf install -y git;
 RUN dnf install -y golang;
 RUN dnf install -y npm;
 RUN dnf install -y fzf ripgrep wget unzip;
+ENV SHELL=/bin/bash
 WORKDIR /root/.config/nvim
 COPY . .
-ENTRYPOINT ["nvim"]
+# ENTRYPOINT ["nvim"]
+ENTRYPOINT ["sh", "-c"]
+CMD ["nvim"]
