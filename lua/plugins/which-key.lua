@@ -30,12 +30,12 @@ return {
 				{ "<leader>vb", group = "[V]im[B]e" },
 				-- { '<leader>b',  group = '[B]uffers' },
 				-- { '<leader>b_', hidden = true },
-				-- { '<leader>B',  group = 'De[B]ug' },
-				-- { '<leader>B_', hidden = true },
+				{ "<leader>B", group = "De[B]ug" },
+				{ "<leader>B_", hidden = true },
 			})
 			-- visual mode
 			wk.add({
-				-- { '<leader>g', desc = '[G]it hunk', mode = 'v' },
+				{ "<leader>g", desc = "[G]it hunk", mode = "v" },
 			})
 		end,
 	},

@@ -54,31 +54,35 @@ ___
     - [x] On command (<space-f>)
     - [x] On save
 - [x] Autocompletion (<C-x><C-o> works by default omni completion)
+    - [x] [Blink.cmp](https://github.com/Saghen/blink.cmp)
 - [x] [Telescope](https://github.com/nvim-telescope/telescope.nvim)
     - [x] Various searches + key maps
-- [ ] [Harpoon (v2)](https://github.com/ThePrimeagen/harpoon/tree/harpoon2)
-- [ ] Floating terminal
-    - [ ] Custom floating terminal
-    - [ ] Optional: [NvChad/nvterm](NvChad/nvterm)
+- [x] [Harpoon (v2)](https://github.com/ThePrimeagen/harpoon/tree/harpoon2)
+- [x] Floating terminal
+    - [x] [FTerm](https://github.com/numToStr/FTerm.nvim)
+    - [ ] Optional: Custom floating terminal
+    - [x] Optional: [NvChad/nvterm](NvChad/nvterm)
 - [x] File tree manager
     - [x] [Oil](https://github.com/stevearc/oil.nvim)
     - [x] [NvimTree](https://github.com/nvim-tree/nvim-tree.lua)
     - [x] [Neo-Tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
 - [x] [Markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
 - [ ] DEBUGGING
-    - [ ]
+    - [ ] Go
+    - [ ] Python
+    - [ ] Optional: Lua 
 - [ ] Custom scripts
     - [x] Visual mode multiline append
-    - [x] Visual mode multiline prepend (not ready yet)
+    - [ ] Visual mode multiline prepend (not ready yet)
 
 - [ ] From kickstart.nvim
     - [x] vim.highlight.on_yank()
-    - [x] autopairs [link](windwp/nvim-autopairs)
-    - [ ] gitsigns
-    - [x] indentline
+    - [x] [autopairs](windwp/nvim-autopairs)
+    - [x] [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
+    - [x] [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
+    - [x] whichkey setup
     - [ ] lints
     - [ ] debug (?)
-    - [x] whichkey setup
 
 ## Cheatsheet
 [cheatsheet.md](cheatsheet.md)
