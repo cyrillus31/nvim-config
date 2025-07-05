@@ -1,3 +1,15 @@
+-- Lualine
+-- https://github.com/nvim-lualine/lualine.nvim
+
+local dapui_filetypes = {
+	"dapui_scopes",
+	"dapui_breakpoints",
+	"dapui_stacks",
+	"dapui_watches",
+	"dap-repl",
+	"dapui_console", -- underscore!
+}
+
 -- Tabs helper object
 local T = {}
 
@@ -59,10 +71,10 @@ return {
 				-- section_separators = { left = ' ', right = '' },
 				section_separators = { left = "", right = " " },
 				disabled_filetypes = {
-					statusline = { "NvimTree", "Neotree" },
+					statusline = { "NvimTree", "Neotree", table.unpack(dapui_filetypes) },
 					winbar = {},
 				},
-				ignore_focus = { "NvimTree", "Neotree" },
+				ignore_focus = { "NvimTree", "Neotree", table.unpack(dapui_filetypes) },
 				always_divide_middle = true,
 				globalstatus = false,
 				refresh = {

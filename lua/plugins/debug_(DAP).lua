@@ -11,7 +11,29 @@ return {
 			"nvim-neotest/nvim-nio",
 
 			-- Installs the debug adapters for you
-			{ "jay-babu/mason-nvim-dap.nvim", dependencies = { "mason-org/mason.nvim" }, lazy = false },
+			{
+				"jay-babu/mason-nvim-dap.nvim",
+				dependencies = { "mason-org/mason.nvim" },
+				lazy = false,
+				config = function()
+					require("mason-nvim-dap").setup({
+						-- Makes a best effort to setup the various debuggers with
+						-- reasonable debug configurations
+						automatic_installation = true,
+
+						-- You can provide additional configuration to the handlers,
+						-- see mason-nvim-dap README for more information
+						handlers = {},
+
+						ensure_installed = {
+							-- Update this to ensure that you have the debuggers for the langs you want
+							-- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
+							"delve", -- golang
+							"python", -- python as per documentation of mason-nvim-dap
+						},
+					})
+				end,
+			},
 
 			-- Shows variable values inline as virtual text
 			"theHamsta/nvim-dap-virtual-text",
@@ -77,22 +99,6 @@ return {
 			local dapui = require("dapui")
 
 			print("Trying to setup  DAPs!")
-			require("mason-nvim-dap").setup({
-				-- Makes a best effort to setup the various debuggers with
-				-- reasonable debug configurations
-				automatic_installation = true,
-
-				-- You can provide additional configuration to the handlers,
-				-- see mason-nvim-dap README for more information
-				handlers = {},
-
-				ensure_installed = {
-					-- Update this to ensure that you have the debuggers for the langs you want
-					-- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
-					"delve", -- golang
-					"python", -- python as per documentation of mason-nvim-dap
-				},
-			})
 
 			-- Dap UI setup
 			-- For more information, see |:help nvim-dap-ui|
