@@ -10,51 +10,12 @@ local function set_keymaps()
 	end, { desc = "[T]oggle [L]inting", noremap = true, silent = true })
 end
 
--- WARN: doesn't work properly
-function Toggle_linting()
-	linting_enabled = not linting_enabled -- Toggle the state
-	if linting_enabled then
-		print("Linting enabled")
-		-- Re-enable linting by setting up the autocommand again
-		vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-			callback = function()
-				require("lint").try_lint()
-			end,
-			group = "lint", -- Use a group to avoid duplicate autocommands
-		})
-	else
-		print("Linting disabled")
-		-- Clear the autocommand to disable linting
-		vim.api.nvim_del_autocmd(vim.api.nvim_get_autocmds({ group = "lint" })[1].id)
-	end
-end
-
 return {
 	{
 		"mfussenegger/nvim-lint",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			{
-				-- NOTE: "mason-nvim-lint" is used to install and eanble linters
-				"rshkarin/mason-nvim-lint",
-				dependencies = { "williamboman/mason.nvim" },
-				config = function()
-					-- 2)
-					-- Setup download of linters with "mason-nvim-lint"
-					require("mason-nvim-lint").setup({
-						ensure_installed = {
-							"golangcilint", -- name 'golangci-lint' can't be used for installation
-							"shellcheck", -- bash
-							-- "pylint",
-							-- "selene",
-							-- "luacheck", --WARNING: "luacheck" requires "luarocks" package maanger for lua
-						},
-						automatic_installation = true,
-						quiet_mode = true, -- Don't show notifications on startup
-					})
-				end,
-			},
-		},
+		-- event = { "BufReadPre", "BufNewFile" }, -- WARN: it is advised to load the plugin on these events but configuration messes up the autoinstallation
+		dependencies = "williamboman/mason.nvim",
+		lazy = false,
 		config = function()
 			-- Confgiure linters with "nvim-lint"
 			-- WARNING: "nvim-lint" doesn't have 'require("lint").setup({...})' command!
@@ -73,6 +34,24 @@ return {
 				terraform = { "tflint" },
 				sh = { "shellcheck" },
 			}
+		end,
+	},
+	{
+		"rshkarin/mason-nvim-lint",
+		config = function()
+			-- WARNING: you don't have to provide configuration if you setup nvim-lint first!
+			require("mason-nvim-lint").setup()
+			-- require("mason-nvim-lint").setup({
+			-- 	ensure_installed = {
+			-- 		"shellcheck", -- bash
+			-- 		"golangcilint", -- name 'golangci-lint' can't be used for installation
+			-- 		-- "pylint",
+			-- 		-- "selene",
+			-- 		-- "luacheck", --WARNING: "luacheck" requires "luarocks" package maanger for lua
+			-- 	},
+			-- 	automatic_installation = true,
+			-- 	quiet_mode = true, -- Don't show notifications on startup
+			-- })
 
 			set_keymaps()
 			-- Setup an autocommand to trigger linting (https://github.com/mfussenegger/nvim-lint)
