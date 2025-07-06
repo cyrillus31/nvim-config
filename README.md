@@ -1,15 +1,42 @@
 # nvim-config
 My own NVIM config from ground up
 
-### How to create an alias to a different configuration
+## How to install
+
+### Backup your current NeoVim files
 ```bash
-alias nvim='NVIM_APPNAME="nvim-baldingbuilder" nvim'
+# required
+mv ~/.config/nvim ~/.config/nvim.bak
+
+# optional but recommended
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
+# {,.bak} is a brace expansion command which translates to the same thing
+```
+
+### Clone the repository and watch Lazy install everything
+```bash
+git clone https://github.com/cyrillus31/nvim-config.git ~/.config/nvim && nvim
+```
+
+### Use alias to run new configuration from a different directory
+```bash
+git clone https://github.com/cyrillus31/nvim-config.git ~/.config/new-nvim-config
+echo alias newnvim="'NVIM_APPNAME=new-nvim-config nvim'" >> ~/.bashrc
+source ~/.bashrc
+newnvim
+```
+
+### Test installation in a self-destructing Docker contianer with Fedora
+
+```bash
+source run-in_container.sh
 ```
 
 ### Dependencies
 - neovim
 - git
-- golang
 - ripgrep
 - fzf
 - wget
@@ -21,16 +48,7 @@ alias nvim='NVIM_APPNAME="nvim-baldingbuilder" nvim'
 
 ### TODO
 ___
-- [x] Quality of life keymaps + whichkey plugin (moving around splits, etc.)
-    - [x] Shiftwidth, number, relativenumber
-    - [x] vim.opt.clipboard = "unnamedplus"
-- [ ] Filetype plugins: 'after/ftplugin'
-    - [x] lua.lua
-    - [ ] python.lua
-    - [ ] go.lua
 - [x] Nvim-Treesitter
-- [x] Theme
-    - [ ] Optional: Theme manager?
 - [x] Lazy (Package Manager)
 - [x] Status Line (Lualine or Mini)
     - [x] [mini.statusline](https://github.com/echasnovski/mini.statusline)
@@ -74,6 +92,22 @@ ___
     - [x] Go
     - [x] Python
     - [ ] Optional: Lua 
+- [x] [Which-key](https://github.com/folke/which-key.nvim)
+- [x] Colorschemes
+    - [x] [Nightfox](https://github.com/EdenEast/nightfox.nvim) *(the best theme)*
+    - [x] kanagawa
+    - [x] tokyonight
+    - [x] catppuccin
+    - [x] gruvbox
+    - [x] github-nvim-theme
+- [x] [autopairs](windwp/nvim-autopairs)
+- [x] [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
+- [x] [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim) indentation guidelines
+- [x] Quality of life keymaps (moving around splits, clipbaord, etc.)
+- [ ] Filetype plugins: 'after/ftplugin'
+    - [x] lua.lua
+    - [ ] python.lua
+    - [ ] go.lua
 - [ ] Custom scripts
     - [x] Visual mode multiline append
     - [ ] Visual mode multiline prepend (not ready yet)
@@ -81,19 +115,9 @@ ___
     - [x] [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
     - [ ] Optional: [alpha-nvim](https://github.com/goolord/alpha-nvim)
     - [ ] Optional: [startup-nvim](https://github.com/max397574/startup.nvim)
-- [ ] Colorschemes
-    - [x] [Nightfox](https://github.com/EdenEast/nightfox.nvim) *(the best theme)*
-    - [x] kanagawa
-    - [x] tokyonight
-    - [x] catppuccin
-    - [x] gruvbox
-    - [x] github-nvim-theme
 
 - [x] From kickstart.nvim
     - [x] vim.highlight.on_yank()
-    - [x] [autopairs](windwp/nvim-autopairs)
-    - [x] [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
-    - [x] [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
     - [x] whichkey setup
 
 
