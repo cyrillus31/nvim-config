@@ -34,8 +34,8 @@ vim.keymap.set("n", "<S-A-j>", ":resize -1 <CR>")
 
 -- Functions
 local f = "require('functions.text_manipulation')"
-vim.keymap.set("x", "A", "<Esc><Cmd>lua " .. f .. ".multiline_append()<CR>")
-vim.keymap.set("x", "I", "<Esc><Cmd>lua " .. f .. ".multiline_prepend()<CR>")
+vim.keymap.set("x", "<s-a>", "<Esc><Cmd>lua " .. f .. ".multiline_append()<CR>")
+-- vim.keymap.set("x", "I", "<Esc><Cmd>lua " .. f .. ".multiline_prepend()<CR>")
 
 -- Tabs
 vim.keymap.set("n", "<Tab>", "<cmd> tabnext <CR>", { desc = "next tab" })

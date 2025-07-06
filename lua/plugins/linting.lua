@@ -24,15 +24,17 @@ return {
 				-- python = { "pylint" },
 				-- lua = { "selene" },
 				-- lua = { "luacheck" }, -- WARNING: "luacheck" requires "luarocks" package maanger for lua
+				sh = { "shellcheck" },
 				go = { "golangcilint" },
-				-- NOTE: Below is default from nvim-lint
-				-- (/home/user/.local/share/balding-nvim/lazy/nvim-lint/lua/lint.lua)
-				text = { "vale" },
+
+				-- NOTE: Below is default from nvim-lint (/home/user/.local/share/balding-nvim/lazy/nvim-lint/lua/lint.lua)
+				text = nil,
 				json = { "jsonlint" },
-				markdown = { "vale" },
+				markdown = nil,
 				dockerfile = { "hadolint" },
 				terraform = { "tflint" },
-				sh = { "shellcheck" },
+				-- markdown = { "vale" },
+				-- text = { "vale" },
 			}
 		end,
 	},

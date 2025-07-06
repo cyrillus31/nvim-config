@@ -36,7 +36,7 @@ end
 return {
 	{
 		"echasnovski/mini.nvim",
-		enable = false,
+		enabled = false,
 		version = false,
 		config = function()
 			-- NOTE: It is advised to call require("mini.statusline").setup()

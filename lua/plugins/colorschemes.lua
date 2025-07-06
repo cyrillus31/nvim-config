@@ -1,5 +1,27 @@
 return {
 	{
+		"EdenEast/nightfox.nvim",
+		enabled = true,
+		config = function()
+			require("nightfox").setup({
+				options = {
+					dim_inactive = true,
+				},
+			})
+			-- Dark themes:
+			vim.cmd.colorscheme("terafox")
+			-- vim.cmd.colorscheme("nightfox")
+			-- vim.cmd.colorscheme("duskfox")
+			-- vim.cmd.colorscheme("nordfox")
+			-- vim.cmd.colorscheme("carbonfox")
+			--
+			-- Light themes:
+			-- vim.cmd.colorscheme("dayfox")
+			-- vim.cmd.colorscheme("dawnfox")
+			--
+		end,
+	},
+	{
 		"folke/tokyonight.nvim",
 		enabled = false,
 		lazy = false,
@@ -19,9 +41,12 @@ return {
 	},
 	{
 		"rebelot/kanagawa.nvim",
-		enabled = true,
+		enabled = false,
 		lazy = false,
 		config = function()
+			require("kanagawa").setup({
+				dimInactive = true,
+			})
 			vim.cmd.colorscheme("kanagawa-wave")
 		end,
 	},
@@ -33,7 +58,6 @@ return {
 		config = function()
 			vim.cmd.colorscheme("gruvbox")
 		end,
-		opts = {},
 	},
 	{
 		"projekt0n/github-nvim-theme",

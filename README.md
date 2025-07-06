@@ -78,6 +78,13 @@ ___
     - [x] [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
     - [ ] Optional: [alpha-nvim](https://github.com/goolord/alpha-nvim)
     - [ ] Optional: [startup-nvim](https://github.com/max397574/startup.nvim)
+- [ ] Colorschemes
+    - [x] [Nightfox](https://github.com/EdenEast/nightfox.nvim) *(the best theme)*
+    - [x] kanagawa
+    - [x] tokyonight
+    - [x] catppuccin
+    - [x] gruvbox
+    - [x] github-nvim-theme
 
 - [ ] From kickstart.nvim
     - [x] vim.highlight.on_yank()
