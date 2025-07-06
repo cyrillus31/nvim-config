@@ -7,15 +7,17 @@ alias nvim='NVIM_APPNAME="nvim-baldingbuilder" nvim'
 ```
 
 ### Dependencies
-##### FZF:
+- neovim
+- git
+- golang
 - ripgrep
 - fzf
 - wget
 - unzip
-- npm
+- npm -> yarn *(for markdown-preview)*
 
-### Lazy + LSP setup
-Lazy -> Mason -> mason-lspconfig -> ensure_installed
+## Cheatsheet
+[lua_neovim_cheatsheet.md](lua_neovim_cheatsheet.md)
 
 ### TODO
 ___
@@ -67,9 +69,10 @@ ___
     - [x] [NvimTree](https://github.com/nvim-tree/nvim-tree.lua)
     - [x] [Neo-Tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
 - [x] [Markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
-- [ ] DEBUGGING
-    - [ ] Go
-    - [ ] Python
+- [x] DEBUGGING
+    - [x] [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
+    - [x] Go
+    - [x] Python
     - [ ] Optional: Lua 
 - [ ] Custom scripts
     - [x] Visual mode multiline append
@@ -86,16 +89,12 @@ ___
     - [x] gruvbox
     - [x] github-nvim-theme
 
-- [ ] From kickstart.nvim
+- [x] From kickstart.nvim
     - [x] vim.highlight.on_yank()
     - [x] [autopairs](windwp/nvim-autopairs)
     - [x] [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
     - [x] [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
     - [x] whichkey setup
-    - [ ] lints
-    - [ ] debug (?)
 
-## Cheatsheet
-[cheatsheet.md](cheatsheet.md)
 
 
