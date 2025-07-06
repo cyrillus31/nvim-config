@@ -98,8 +98,6 @@ return {
 			local dap = require("dap")
 			local dapui = require("dapui")
 
-			print("Trying to setup  DAPs!")
-
 			-- Dap UI setup
 			-- For more information, see |:help nvim-dap-ui|
 			dapui.setup({
