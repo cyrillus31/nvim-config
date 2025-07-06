@@ -2,13 +2,14 @@
 -- https://github.com/iamcco/markdown-preview.nvim
 
 -- WARN: install with yarn or npm
--- Doesn't install correctly in Docker container with Fedora and npm
+-- Doesn't install correctly in Docker without yarn: `dnf install -y npm && npm install -g yarn`
+
 return {
 	"iamcco/markdown-preview.nvim",
-	enabled = false,
+	enabled = true,
 	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 	lazy = false,
-	build = "cd app && npm install",
+	build = "cd app && yarn install",
 	init = function()
 		vim.g.mkdp_filetypes = { "markdown" }
 	end,
