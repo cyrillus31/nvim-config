@@ -4,10 +4,12 @@ return {
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
 		config = function() -- This is the function that runs, AFTER loading
-			require("which-key").setup()
+			local wk = require("which-key")
+			wk.setup({
+				preset = "modern", -- "classic" | "modern" | "helix"
+			})
 
 			-- Document existing key chains
-			local wk = require("which-key")
 			wk.add({
 				-- NOTE: config below is directly from my Kickstart setup
 				{ "<leader>c", group = "[C]ode" },
