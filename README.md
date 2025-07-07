@@ -1,6 +1,7 @@
 # nvim-config
 My own NVIM config from ground up
 
+
 ## How to install
 
 ### Backup your current NeoVim files
@@ -103,6 +104,8 @@ ___
 - [x] [autopairs](windwp/nvim-autopairs)
 - [x] [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 - [x] [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim) indentation guidelines
+- [x] [nvim-highlight-colors](https://github.com/brenoprata10/nvim-highlight-colors) show hex values colors as inline text
+- [x] [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) autoclose **html** tags
 - [x] Quality of life keymaps (moving around splits, clipbaord, etc.)
 - [ ] Filetype plugins: 'after/ftplugin'
     - [x] lua.lua
