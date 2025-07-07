@@ -4,6 +4,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
 
+vim.o.termguicolors = true
+
 -- Highlith the specified column
 vim.opt.colorcolumn = "80"
 
