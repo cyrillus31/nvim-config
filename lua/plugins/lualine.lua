@@ -51,10 +51,10 @@ return {
 				-- section_separators = { left = ' ', right = ' ' },
 				-- section_separators = { left = ' ', right = '' },
 				disabled_filetypes = {
-					statusline = { "NvimTree", "Neotree", table.unpack(dapui_filetypes) },
+					statusline = { "NvimTree", "Neotree", unpack(dapui_filetypes) },
 					winbar = {},
 				},
-				ignore_focus = { "NvimTree", "Neotree", table.unpack(dapui_filetypes) },
+				ignore_focus = { "NvimTree", "Neotree", unpack(dapui_filetypes) },
 				always_divide_middle = false,
 				globalstatus = true,
 				refresh = {

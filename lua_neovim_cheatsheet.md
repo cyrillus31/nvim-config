@@ -1,5 +1,10 @@
 # NVIM + Lua cheatsheet
 
+Check NeoVim's lua version with 
+```vim
+:lua print(_VERSION)
+```
+
 ## General
 
 `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -134,6 +139,8 @@ local Table2 = {"1", "2"}
 
 table.move(Table1, 1, #Table1, 3, Table2)
 
+-- WARN: lua@5.1 uses unpack() instead of table.unpack()
+-- check version with ':lua print(_VERSION)'
 print(table.unpack(Table2))  -- Output: 1    2    1    2    3    4    5
 
 ```
