@@ -1,6 +1,10 @@
 # nvim-config
-My own NVIM config from ground up
+My own [NeoVim](https://neovim.io/) config from ground up.
 
+NVIM v0.11.2  
+Build type: RelWithDebInfo  
+LuaJIT 2.1.1744318430
+Lua 5.1
 
 ## How to install
 
@@ -32,7 +36,7 @@ newnvim
 ### Test installation in a self-destructing Docker contianer with Fedora
 
 ```bash
-source run-in_container.sh
+source run_in_container.sh
 ```
 
 ### Dependencies
