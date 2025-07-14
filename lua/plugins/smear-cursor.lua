@@ -24,5 +24,9 @@ return {
 		-- Smear cursor color. Defaults to Cursor GUI color if not set.
 		-- Set to "none" to match the text color at the target cursor position.
 		cursor_color = "none",
+
+		stiffness = 0.8,
+		trailing_stiffness = 0.5,
+		time_interval = 7, --milliseconds
 	},
 }
