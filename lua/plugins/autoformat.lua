@@ -29,7 +29,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
-				python = { "black", "isort" },
+				-- python = { "black", "isort" }, -- can't be used at Yandex
 				go = { "gofmt" },
 				c = { "clang-format" },
 				cpp = { "clang-format" },
