@@ -147,6 +147,7 @@ local function autoformat_on_save_setup(event, client)
 	end
 end
 
+
 ----------------------------------
 ------------- RETURN -------------
 ----------------------------------

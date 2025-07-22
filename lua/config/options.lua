@@ -6,6 +6,10 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.o.termguicolors = true
 
+-- WARN: messes up telescope windows
+-- Set border globally
+-- vim.o.winborder = "rounded"
+
 -- Highlith the specified column
 vim.opt.colorcolumn = "80"
 
