@@ -9,3 +9,8 @@ require("config.autocommands")
 require("config.commands")
 require("config.keymappings")
 require("config.diagnostic")
+
+
+vim.lsp.config("pyright", {
+	root_markers = {  "pyrightconfig.json", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", ".git" }
+})
