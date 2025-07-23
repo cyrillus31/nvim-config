@@ -7,15 +7,19 @@ return {
 			{
 				"<leader>f",
 				function()
-					require("conform").format({ async = true, lsp_fallback = true })
+					require("conform").format({ async = false, timeout_ms = 2000, lsp_fallback = false })
+					vim.cmd(":e!") -- reload buffer after formatting. Required for "yaformatter".
 				end,
 				mode = "",
 				desc = "[F]ormat buffer",
 			},
 		},
 		opts = {
+			async = false,
 			notify_on_error = true,
 			format_on_save = false,
+			notify_no_formatters = true,
+			timeout_ms = 2000,
 			-- format_on_save = function(bufnr)
 			--   -- Disable "format_on_save lsp_fallback" for languages that don't
 			--   -- have a well standardized coding style. You can add additional
@@ -35,7 +39,14 @@ return {
 				cpp = { "clang-format" },
 				-- Conform will run the first available formatter
 				javascript = { "prettierd", "prettier", stop_after_first = true },
+				python =  { "yaformatter" } -- NOTE: yadnex
 			},
+			formatters = {
+				yaformatter = {
+					command = "ya" ,
+					args = { "tool",  "tt", "format", "$FILENAME" },
+				}
+			}
 		},
 	},
 }
