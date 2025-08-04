@@ -1,3 +1,15 @@
+local function additional_configuration()
+vim.api.nvim_create_user_command("Telescope", function(opts)
+  if opts.args == "dotfiles" then
+    require('telescope.builtin').find_files({
+      prompt_title = "Dotfiles",
+      cwd = vim.fn.expand("~/dotfiles"),
+      hidden = true,
+    })
+  end
+end, { nargs = 1 })
+end
+
 -- This setup is taken directly from Kickstart-nvim
 return {
 	{ -- Fuzzy Finder (files, lsp, etc)
@@ -113,6 +125,9 @@ return {
 			vim.keymap.set("n", "<leader>sn", function()
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[S]earch [N]eovim files" })
+
+			-- ADDITIONAL CONFIGURATION:
+			additional_configuration()
 		end,
 	},
 }
