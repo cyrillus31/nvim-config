@@ -7,15 +7,26 @@ return {
 			{
 				"<leader>f",
 				function()
-					require("conform").format({ async = false, timeout_ms = 2000, lsp_fallback = false })
-					vim.cmd(":e!") -- reload buffer after formatting. Required for "yaformatter".
+					require("conform").format({
+						async = false,
+						timeout_ms = 5000,
+						lsp_fallback = true,
+						callback = function(bufnr, results)
+							for _, r in pairs(results) do
+								if r.name == "yaformatter" then
+									vim.cmd(":e!") -- reload buffer after formatting. Required for "yaformatter".
+									break
+								end
+							end
+						end,
+					})
 				end,
 				mode = "",
 				desc = "[F]ormat buffer",
 			},
 		},
 		opts = {
-			async = false,
+			async = true,
 			notify_on_error = true,
 			format_on_save = false,
 			notify_no_formatters = true,
@@ -39,14 +50,14 @@ return {
 				cpp = { "clang-format" },
 				-- Conform will run the first available formatter
 				javascript = { "prettierd", "prettier", stop_after_first = true },
-				python =  { "yaformatter" } -- NOTE: yadnex
+				python =  { "yaformatter", "black", "isrot", stop_after_first = true } -- NOTE: yadnex
 			},
 			formatters = {
 				yaformatter = {
-					command = "ya" ,
-					args = { "tool",  "tt", "format", "$FILENAME" },
-				}
-			}
+					command = "ya",
+					args = { "tool", "tt", "format", "$FILENAME" },
+				},
+			},
 		},
 	},
 }
