@@ -123,9 +123,19 @@ ___
     - [ ] Optional: [alpha-nvim](https://github.com/goolord/alpha-nvim)
     - [ ] Optional: [startup-nvim](https://github.com/max397574/startup.nvim)
 
+- [ ] Implement profiles
+
 - [x] From kickstart.nvim
     - [x] vim.highlight.on_yank()
     - [x] whichkey setup
 
+- [ ] Yandex:
+    - [ ] Distinguish code generated buffers
+    - [ ] Ya integration
+    - [ ] Arc integration
+    - [ ] Separate profile for plugins and so on
 
+- [ ] Vide coding tools:
+    - [ ] Copilot
+    - [ ] ???
 
