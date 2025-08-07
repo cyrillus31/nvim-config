@@ -1,13 +1,13 @@
 local function additional_configuration()
-vim.api.nvim_create_user_command("Telescope", function(opts)
-  if opts.args == "dotfiles" then
-    require('telescope.builtin').find_files({
-      prompt_title = "Dotfiles",
-      cwd = vim.fn.expand("~/dotfiles"),
-      hidden = true,
-    })
-  end
-end, { nargs = 1 })
+	vim.api.nvim_create_user_command("Telescope", function(opts)
+		if opts.args == "dotfiles" then
+			require("telescope.builtin").find_files({
+				prompt_title = "Dotfiles",
+				cwd = vim.fn.expand("~/dotfiles"),
+				hidden = true,
+			})
+		end
+	end, { nargs = 1 })
 end
 
 -- This setup is taken directly from Kickstart-nvim
@@ -69,6 +69,16 @@ return {
 					},
 					mappings = {
 						i = { ["<c-enter>"] = "to_fuzzy_refine" },
+					},
+					vimgrep_arguments = {
+						"rg",
+						"--color=never",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+						"-L", -- NOTE: this flag allows to follow symlinks
 					},
 				},
 				-- pickers = {}
