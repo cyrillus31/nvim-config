@@ -1,6 +1,6 @@
 local opts = {
 	filters = {
-		dotfiles = true, -- use H to turn on dotfiles
+		dotfiles = false, -- use H to turn on dotfiles
 		exclude = { vim.fn.stdpath 'config' .. '/lua/custom' },
 		custom = { "__pycache__", ".mypy_cache", ".pytest_cache" },
 	},
@@ -32,9 +32,12 @@ local opts = {
 		},
 	},
 	renderer = {
-		root_folder_label = false,
+    -- root_folder_label = ":~:s?$?/..?",
+		root_folder_label = ":t",
 		highlight_git = true,
 		highlight_opened_files = 'none',
+		full_name = true,
+		hidden_display = "all",
 
 		indent_markers = {
 			enable = true,

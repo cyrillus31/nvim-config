@@ -8,6 +8,7 @@
 --  
 --  
 --  
+-- ░▒▓█ 98% █▓▒░
 
 -- These debugui-related filetypes can be used to be excluded from lualine focus
 local dapui_filetypes = {
@@ -28,13 +29,13 @@ end
 
 local function filepath_contains(keyword, message)
 	return function()
-			local filepath = vim.api.nvim_buf_get_name(0)
-			if string.match(filepath, keyword) == keyword then
-				return message
-			else
-				return ""
-			end
+		local filepath = vim.api.nvim_buf_get_name(0)
+		if string.match(filepath, keyword) == keyword then
+			return message
+		else
+			return ""
 		end
+	end
 end
 
 return {
@@ -47,16 +48,17 @@ return {
 				icons_enabled = true,
 				theme = "auto",
 				-- COMPONENT SEPARATORS:
-				component_separators = { left = "", right = "│" },
+				-- component_separators = { left = "", right = "│" },
+				component_separators = { left = "", right = "" },
 				-- component_separators = { left = '', right = '' },
 				-- component_separators = { left = "", right = "" },
 				-- component_separators = { left = "", right = "" },
 				-- component_separators = { left = "", right = "" },
 
 				-- SELECTION SEPARATORS:
-				section_separators = { left = "", right = " " },
+				-- section_separators = { left = "", right = " " },
 				-- section_separators = { left = "", right = "" },
-				-- section_separators = { left = '', right = '' },
+				section_separators = { left = "", right = "" },
 				-- section_separators = { left = '', right = '' },
 				-- section_separators = { left = ' ', right = ' ' },
 				-- section_separators = { left = ' ', right = ' ' },
@@ -75,8 +77,18 @@ return {
 				},
 			},
 			sections = {
-				lualine_a = { { "mode", separator = { left = "" } } },
-				lualine_b = { "branch", { "filename", path = 1, shorting_target = 10, separator = { right = "" } }, {filepath_contains("generated", "GENERATED!"), color = { bg = "red" }, draw_empty = false, separator = { right = "" } } },
+				-- lualine_a = { { "mode", separator = { left = "", right = "▓▒░" } } },
+				lualine_a = { { "mode", separator = { left = "", right = "" } } },
+				lualine_b = {
+					"branch",
+					{ "filename", path = 1, shorting_target = 10, separator = { right = "" } },
+					{
+						filepath_contains("generated", "GENERATED!"),
+						color = { bg = "red" },
+						draw_empty = false,
+						separator = { right = "" },
+					},
+				},
 				lualine_c = { "diff", "diagnostics" },
 				lualine_x = { "fileformat", "filetype", get_python_env },
 				lualine_y = { "lsp_status" },
