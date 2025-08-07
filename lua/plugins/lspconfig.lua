@@ -189,6 +189,7 @@ return {
 					"black",
 					"isort",
 					"clang-format",
+					"prettierd"
 				},
 			})
 
