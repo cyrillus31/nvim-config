@@ -65,7 +65,7 @@ return {
 			},
 			sections = {
 				lualine_a = { { "mode", separator = { left = "" } } },
-				lualine_b = { "branch", { "filename", path = 4, shorting_target = 40 } },
+				lualine_b = { "branch", { "filename", path = 1, shorting_target = 10 } },
 				lualine_c = { "diff", "diagnostics" },
 				lualine_x = { "fileformat", "filetype", get_python_env },
 				lualine_y = { "lsp_status" },
