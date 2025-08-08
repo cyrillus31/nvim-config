@@ -29,6 +29,7 @@ return {
 				{ "<leader>h", group = "[H]arpoon" },
 				{ "<leader>h_", hidden = true },
 				{ "<leader>v", group = "[V]im" },
+				{ "<leader>vm", group = "[m]odes" },
 				{ "<leader>vb", group = "[V]im[B]e" },
 				-- { '<leader>b',  group = '[B]uffers' },
 				-- { '<leader>b_', hidden = true },

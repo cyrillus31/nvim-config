@@ -20,12 +20,6 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 
 vim.keymap.set("n", "<space>x", "<cmd>source %<CR>")
 
--- Splits
-vim.keymap.set("n", "<S-A-l>", ":vertical resize +5 <CR>")
-vim.keymap.set("n", "<S-A-h>", ":vertical resize -5 <CR>")
-vim.keymap.set("n", "<S-A-k>", ":resize +1 <CR>")
-vim.keymap.set("n", "<S-A-j>", ":resize -1 <CR>")
-
 --Terminal
 -- This won"t work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
@@ -44,3 +38,10 @@ vim.keymap.set("n", "<S-Tab>", "<cmd> tabprevious <CR>", { desc = "next tab" })
 -- Vim
 vim.keymap.set("n", "<leader>vr", ":bufdo e<CR>", { desc = "[R]eload all buffers (:bufdo e)" })
 vim.keymap.set("n", "<leader>vs", ":wa<CR>", { desc = "[S]ave all buffers (:wa)" })
+
+-- WARN: depracated
+-- Splits
+vim.keymap.set("n", "<S-A-l>", ":vertical resize +5 <CR>")
+vim.keymap.set("n", "<S-A-h>", ":vertical resize -5 <CR>")
+vim.keymap.set("n", "<S-A-k>", ":resize +1 <CR>")
+vim.keymap.set("n", "<S-A-j>", ":resize -1 <CR>")
