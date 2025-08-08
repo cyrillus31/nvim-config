@@ -130,10 +130,11 @@ ___
     - [x] whichkey setup
 
 - [ ] Yandex:
-    - [ ] Distinguish code generated buffers
+    - [x] Distinguish code generated buffers
     - [ ] Ya integration
     - [ ] Arc integration
     - [ ] Separate profile for plugins and so on
+    - [ ] White Space Linter \[wsl] form golangci-lint
 
 - [ ] Vide coding tools:
     - [ ] Copilot
