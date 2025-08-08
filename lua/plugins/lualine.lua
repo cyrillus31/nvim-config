@@ -27,14 +27,25 @@ local function get_python_env()
 	return string.sub(output, 1, -2)
 end
 
-local function filepath_contains(keyword, message)
+---@alias MessageGenerator fun(): string
+---Takes keywords to match against the current buffer's filepath
+---and returns a function that generates a status message when there's a match
+---@param keywords string|string[] Keywords to search for in the filepath
+---@param message string Message to return if any keyword is found in the filepath
+---@return MessageGenerator # Function that returns a message string if a keyword matches, empty string otherwise
+local function filepath_contains(keywords, message)
 	return function()
-		local filepath = vim.api.nvim_buf_get_name(0)
-		if string.match(filepath, keyword) == keyword then
-			return message
-		else
-			return ""
+		if type(keywords) == "string" then
+			keywords = { keywords }
 		end
+
+		local filepath = vim.api.nvim_buf_get_name(0)
+		for _, keyword in ipairs(keywords) do
+			if string.match(filepath, keyword) == keyword then
+				return message
+			end
+		end
+		return ""
 	end
 end
 
@@ -83,7 +94,7 @@ return {
 					"branch",
 					{ "filename", path = 1, shorting_target = 10, separator = { right = "" } },
 					{
-						filepath_contains("generated", "GENERATED!"),
+						filepath_contains({ "generated", "gen.go" }, "GENERATED!"),
 						color = { bg = "red" },
 						draw_empty = false,
 						separator = { right = "" },
