@@ -88,6 +88,12 @@ return {
 						draw_empty = false,
 						separator = { right = "" },
 					},
+					{
+						filepath_contains("test", "TEST!"),
+						color = { bg = "orange", fg = "black" },
+						draw_empty = false,
+						separator = { right = "" },
+					},
 				},
 				lualine_c = { "diff", "diagnostics" },
 				lualine_x = { "fileformat", "filetype", get_python_env },
