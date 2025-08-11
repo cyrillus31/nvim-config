@@ -129,6 +129,9 @@ ___
     - [x] vim.highlight.on_yank()
     - [x] whichkey setup
 
+- [ ] Other tool ideas:
+    - [ ] Storage of custom commands devided in groups that can accessed and edited like Harpoon (for example custom several custom commands to run tests, once picked - can be edited using Vim motions)
+
 - [ ] Yandex:
     - [x] Distinguish code generated buffers
     - [ ] Ya integration
