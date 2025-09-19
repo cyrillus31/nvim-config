@@ -1,7 +1,7 @@
 return {
 	{
 		"EdenEast/nightfox.nvim",
-		enabled = false,
+		enabled = true,
 		config = function()
 			require("nightfox").setup({
 				options = {
@@ -9,8 +9,8 @@ return {
 				},
 			})
 			-- Dark themes:
-			-- vim.cmd.colorscheme("terafox")
-			vim.cmd.colorscheme("nightfox")
+			vim.cmd.colorscheme("terafox")
+			-- vim.cmd.colorscheme("nightfox")
 			-- vim.cmd.colorscheme("duskfox")
 			-- vim.cmd.colorscheme("nordfox")
 			-- vim.cmd.colorscheme("carbonfox")
@@ -41,7 +41,7 @@ return {
 	},
 	{
 		"rebelot/kanagawa.nvim",
-		enabled = true,
+		enabled = false,
 		lazy = false,
 		config = function()
 			require("kanagawa").setup({
