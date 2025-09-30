@@ -100,7 +100,7 @@ return {
 						separator = { right = "" },
 					},
 					{
-						filepath_contains("test", "TEST!"),
+						filepath_contains({"tests", "Test", "_test", "test_", "test-", "testsuite" }, "TEST!"),
 						color = { bg = "orange", fg = "black" },
 						draw_empty = false,
 						separator = { right = "" },
