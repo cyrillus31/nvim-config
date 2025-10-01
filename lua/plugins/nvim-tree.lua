@@ -33,6 +33,7 @@ local opts = {
 	},
 	renderer = {
     -- root_folder_label = ":~:s?$?/..?",
+  	decorators = { "Git", "Open", "Hidden", "Modified", "Bookmark", "Diagnostics", "Copied", "Cut", },
 		root_folder_label = ":t",
 		highlight_git = true,
 		highlight_opened_files = 'none',
@@ -49,6 +50,7 @@ local opts = {
 				folder = true,
 				folder_arrow = true,
 				git = true,
+        diagnostics = true,
 			},
 
 			glyphs = {

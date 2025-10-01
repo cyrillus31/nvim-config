@@ -16,6 +16,12 @@ vim.lsp.config("pyright", {
 		python = {
 			pythonPath = "~/.venvs/taxi-python/bin",
 			autoSearchPaths = false,
+			analysis = {
+				autoSearchPaths = true,
+				-- diagnosticMode = "openFilesOnly",
+				diagnosticMode = "all",
+				useLibraryCodeForTypes = true
+			},
 		}
 	}
 })
