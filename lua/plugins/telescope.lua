@@ -69,6 +69,7 @@ return {
 						"-L", -- NOTE: this flag allows to follow symlinks
 					},
 				},
+				file_ignore_patterns = { ".*test-results.*" },
 				-- pickers = {}
 				extensions = {
 					["ui-select"] = {
