@@ -11,9 +11,9 @@ return {
 						async = false,
 						timeout_ms = 5000,
 						lsp_fallback = true,
-						callback = function(bufnr, results)
-							for _, r in pairs(results) do
-								if r.name == "yaformatter" then
+						callback = function(bufnr, formatters)
+							for _, formatter in pairs(formatters) do
+								if formatter.name == "yaformatter" then
 									vim.cmd(":e!") -- reload buffer after formatting. Required for "yaformatter".
 									break
 								end
@@ -28,9 +28,12 @@ return {
 		opts = {
 			async = true,
 			notify_on_error = true,
-			format_on_save = false,
 			notify_no_formatters = true,
 			timeout_ms = 2000,
+			format_on_save = {
+				lsp_fallback = true,
+				ignore_filetypes = { "python", "py" }, -- <--- This is what you need
+			},
 			-- format_on_save = function(bufnr)
 			--   -- Disable "format_on_save lsp_fallback" for languages that don't
 			--   -- have a well standardized coding style. You can add additional
@@ -57,7 +60,7 @@ return {
 				html = { "prettierd", "prettier", stop_after_first = true },
 				markdown = { "prettierd", "prettier", stop_after_first = true },
 
-				python =  { "yaformatter", "black", "isrot", stop_after_first = true } -- NOTE: yadnex
+				python = { "yaformatter", "black", "isrot", stop_after_first = true }, -- NOTE: yadnex
 			},
 			formatters = {
 				yaformatter = {
