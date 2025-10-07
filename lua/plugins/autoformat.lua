@@ -55,7 +55,7 @@ return {
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 				typescript = { "prettierd", "prettier", stop_after_first = true },
 				json = { "prettierd", "prettier", stop_after_first = true },
-				yaml = { "prettierd", "prettier", stop_after_first = true },
+				yaml = { "prettier", "prettierd", stop_after_first = true },
 				css = { "prettierd", "prettier", stop_after_first = true },
 				html = { "prettierd", "prettier", stop_after_first = true },
 				markdown = { "prettierd", "prettier", stop_after_first = true },
@@ -66,6 +66,9 @@ return {
 				yaformatter = {
 					command = "ya",
 					args = { "tool", "tt", "format", "$FILENAME" },
+				},
+				prettier = {
+					prepend_args = { "--tab-width", "4" },
 				},
 			},
 		},
