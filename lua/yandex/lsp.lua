@@ -11,7 +11,15 @@ vim.lsp.config("gopls", {
 -- change what defines root markers for pyright
 -- Logic: if the first root marker is not found anywhere down to the root, it looks for the next marker after that
 vim.lsp.config("pyright", {
-	root_markers = {  "pyrightconfig.json", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", ".git" },
+	root_markers = {
+		"pyrightconfig.json",
+		"pyproject.toml",
+		"setup.py",
+		"setup.cfg",
+		"requirements.txt",
+		"Pipfile",
+		".git",
+	},
 	settings = {
 		python = {
 			pythonPath = "~/.venvs/taxi-python/bin",
@@ -20,10 +28,10 @@ vim.lsp.config("pyright", {
 				autoSearchPaths = true,
 				-- diagnosticMode = "openFilesOnly",
 				diagnosticMode = "all",
-				useLibraryCodeForTypes = true
+				useLibraryCodeForTypes = true,
 			},
-		}
-	}
+		},
+	},
 })
 
 return { {} }

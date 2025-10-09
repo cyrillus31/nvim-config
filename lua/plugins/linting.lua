@@ -25,7 +25,7 @@ return {
 				-- lua = { "selene" },
 				-- lua = { "luacheck" }, -- WARNING: "luacheck" requires "luarocks" package maanger for lua
 				sh = { "shellcheck" },
-				go = { "golangcilint" },
+				-- go = { "golangcilint" },
 
 				-- NOTE: Below is default from nvim-lint (/home/user/.local/share/balding-nvim/lazy/nvim-lint/lua/lint.lua)
 				text = nil,

@@ -147,33 +147,37 @@ local function autoformat_on_save_setup(event, client)
 	end
 end
 
-local function setup_golangci_lint_lsp()
-	-- https://github.com/nametake/golangci-lint-langserver?tab=readme-ov-file
-	local lspconfig = require("lspconfig")
-	local configs = require("lspconfig/configs")
-
-	if not configs.golangcilsp then
-		configs.golangcilsp = {
-			default_config = {
-				cmd = { "golangci-lint-langserver" },
-				root_dir = lspconfig.util.root_pattern(".git", "go.mod"),
-				init_options = {
-					command = {
-						"golangci-lint",
-						"run",
-						"--output.json.path",
-						"stdout",
-						"--show-stats=false",
-						"--issues-exit-code=1",
-					},
-				},
+local function setup_golangci_lint()
+	vim.lsp.config("golangci_lint_ls", {
+		root_markers = {
+			"service.yaml",
+			".golangci.yml",
+			".golangci.yaml",
+			".golangci.toml",
+			".golangci.json",
+			"go.work",
+			"go.mod",
+			".git",
+		},
+		settings = {
+			cmd = { "golangci-lint-langserver -severity info -debug" },
+			filetypes = { "go", "gomod" },
+			init_options = {
+				command = { "golangci-lint", "run", "--output.json.path", "stdout", "-c", "~/.golangci.yml" },
 			},
-		}
-	end
-
-	lspconfig.golangci_lint_ls.setup({
-		filetypes = { "go", "gomod" },
+			root_markers = {
+				"service.yaml",
+				".golangci.yml",
+				".golangci.yaml",
+				".golangci.toml",
+				".golangci.json",
+				"go.work",
+				"go.mod",
+				".git",
+			},
+		},
 	})
+	vim.lsp.enable("golangci_lint_ls")
 end
 
 ----------------------------------
@@ -188,7 +192,7 @@ return {
 			-- local lspconfig = require('lspconfig')
 			-- lspconfig.lua_ls.setup({})
 
-			setup_golangci_lint_lsp()
+			setup_golangci_lint()
 
 			-- 'mason-lspconfig' is used to install language servers in Mason
 			-- You can configure your LSPs in LspAttach callback.
@@ -206,6 +210,7 @@ return {
 					"gopls",
 					"pyright",
 					"clangd",
+					"golangci_lint_ls",
 				},
 			})
 
@@ -221,6 +226,7 @@ return {
 					"clang-format",
 					"prettierd",
 					"prettier",
+					"golangci_lint",
 				},
 			})
 
