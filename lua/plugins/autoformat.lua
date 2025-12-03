@@ -31,8 +31,8 @@ return {
 			notify_no_formatters = true,
 			timeout_ms = 2000,
 			format_on_save = {
-				lsp_fallback = true,
-				ignore_filetypes = { "python", "py" }, -- <--- This is what you need
+				lsp_fallback = false,
+				ignore_filetypes = { "python", "py", "yaml", "yml", "json" }, -- NOTE: this key is not real
 			},
 			-- format_on_save = function(bufnr)
 			--   -- Disable "format_on_save lsp_fallback" for languages that don't
