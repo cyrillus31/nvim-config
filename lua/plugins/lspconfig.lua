@@ -209,6 +209,7 @@ return {
 					"lua_ls",
 					"gopls",
 					"pyright",
+					"ruff",
 					"clangd",
 					"golangci_lint_ls",
 				},
