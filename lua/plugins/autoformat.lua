@@ -54,18 +54,20 @@ return {
 				-- Conform will run the first available formatter
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 				typescript = { "prettierd", "prettier", stop_after_first = true },
-				json = { "prettierd", "prettier", stop_after_first = true },
-				yaml = { "prettier", "prettierd", stop_after_first = true },
+				-- json = { "prettierd", "prettier", stop_after_first = true },
+				-- yaml = { "prettier", "prettierd", stop_after_first = true },
 				css = { "prettierd", "prettier", stop_after_first = true },
 				html = { "prettierd", "prettier", stop_after_first = true },
 				markdown = { "prettierd", "prettier", stop_after_first = true },
+				proto = { "clang-format", "buf" },
 
 				python = { "yaformatter", "black", "isrot", stop_after_first = true }, -- NOTE: yadnex
 			},
 			formatters = {
 				yaformatter = {
 					command = "ya",
-					args = { "tool", "tt", "format", "$FILENAME" },
+					-- args = { "style", "$FILENAME"  },
+					args = { "tool", "tt", "format", "$FILENAME", "2&>/dev/null" },
 				},
 				prettier = {
 					prepend_args = { "--tab-width", "4" },
