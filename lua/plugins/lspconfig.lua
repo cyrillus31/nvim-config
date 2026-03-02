@@ -73,7 +73,7 @@ local function lsp_keymap_setup(event, client)
 
 	-- Opens a popup that displays documentation about the word under your cursor
 	--  See `:help K` for why this keymap.
-	map("K", vim.lsp.buf.hover, "Hover Documentation")
+	map("K", function() vim.lsp.buf.hover({ border = 'rounded' }) end, "Hover Documentation")
 
 	-- NOTE: this is my own setup
 	--- Displays signature information about the symbol under the cursor in a
