@@ -25,54 +25,59 @@ return {
 				desc = "[F]ormat buffer",
 			},
 		},
-		opts = {
-			async = true,
-			notify_on_error = true,
-			notify_no_formatters = true,
-			timeout_ms = 2000,
-			format_on_save = {
-				lsp_fallback = false,
-				ignore_filetypes = { "python", "py", "yaml", "yml", "json" }, -- NOTE: this key is not real
-			},
-			-- format_on_save = function(bufnr)
-			--   -- Disable "format_on_save lsp_fallback" for languages that don't
-			--   -- have a well standardized coding style. You can add additional
-			--   -- languages here or re-enable it for the disabled ones.
-			--   local disable_filetypes = { c = true, cpp = true, python = true, py = true }
-			--   return {
-			--     timeout_ms = 500,
-			--     lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-			--   }
-			-- end,
-			formatters_by_ft = {
-				lua = { "stylua" },
-				-- Conform can also run multiple formatters sequentially
-				-- python = { "black", "isort" }, -- can't be used at Yandex
-				go = { "gofmt" },
-				c = { "clang-format" },
-				cpp = { "clang-format" },
-				-- Conform will run the first available formatter
-				javascript = { "prettierd", "prettier", stop_after_first = true },
-				typescript = { "prettierd", "prettier", stop_after_first = true },
-				-- json = { "prettierd", "prettier", stop_after_first = true },
-				-- yaml = { "prettier", "prettierd", stop_after_first = true },
-				css = { "prettierd", "prettier", stop_after_first = true },
-				html = { "prettierd", "prettier", stop_after_first = true },
-				markdown = { "prettierd", "prettier", stop_after_first = true },
-				proto = { "clang-format", "buf" },
+		opts = function()
+			local ya_available = vim.fn.executable("ya") == 1
+			local opts = {
+				async = true,
+				notify_on_error = true,
+				notify_no_formatters = true,
+				timeout_ms = 2000,
+				format_on_save = {
+					lsp_fallback = false,
+					ignore_filetypes = { "python", "py", "yaml", "yml", "json" }, -- NOTE: this key is not real
+				},
+				-- format_on_save = function(bufnr)
+				--   -- Disable "format_on_save lsp_fallback" for languages that don't
+				--   -- have a well standardized coding style. You can add additional
+				--   -- languages here or re-enable it for the disabled ones.
+				--   local disable_filetypes = { c = true, cpp = true, python = true, py = true }
+				--   return {
+				--     timeout_ms = 500,
+				--     lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+				--   }
+				-- end,
+				formatters_by_ft = {
+					lua = { "stylua" },
+					-- Conform can also run multiple formatters sequentially
+					-- python = { "black", "isort" }, -- can't be used at Yandex
+					go = { "gofmt" },
+					c = { "clang-format" },
+					cpp = { "clang-format" },
+					-- Conform will run the first available formatter
+					javascript = { "prettierd", "prettier", stop_after_first = true },
+					typescript = { "prettierd", "prettier", stop_after_first = true },
+					-- json = { "prettierd", "prettier", stop_after_first = true },
+					-- yaml = { "prettier", "prettierd", stop_after_first = true },
+					css = { "prettierd", "prettier", stop_after_first = true },
+					html = { "prettierd", "prettier", stop_after_first = true },
+					markdown = { "prettierd", "prettier", stop_after_first = true },
+					proto = { "clang-format", "buf" },
 
-				python = { "yaformatter", "black", "isrot", stop_after_first = true }, -- NOTE: yadnex
-			},
-			formatters = {
-				yaformatter = {
+					python = ya_available and { "yaformatter", "black", "isrot", stop_after_first = true } or { "black", "isrot", stop_after_first = true },
+				},
+				formatters = {
+					prettier = {
+						prepend_args = { "--tab-width", "4" },
+					},
+				},
+			}
+			if ya_available then
+				opts.formatters.yaformatter = {
 					command = "ya",
-					-- args = { "style", "$FILENAME"  },
 					args = { "tool", "tt", "format", "$FILENAME", "2&>/dev/null" },
-				},
-				prettier = {
-					prepend_args = { "--tab-width", "4" },
-				},
-			},
-		},
+				}
+			end
+			return opts
+		end,
 	},
 }

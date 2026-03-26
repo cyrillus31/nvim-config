@@ -1,3 +1,7 @@
+-- Yandex Arcadia LSP configurations
+-- Configures LSP servers specifically for Yandex's Arcadia development environment
+-- Only applies when working in ~/arcadia directory
+
 local allowed_dirs = {
 	vim.fn.expand("~/arcadia"),
 }
@@ -13,6 +17,7 @@ local function is_allowed_dir()
 end
 
 if is_allowed_dir() then
+	-- Configure gopls using Yandex's 'ya tool' wrapper
 	vim.lsp.config("gopls", {
 		cmd = { "ya", "tool", "gopls", "serve" },
 		settings = {
@@ -23,8 +28,8 @@ if is_allowed_dir() then
 		},
 	})
 
-	-- change what defines root markers for pyright
-	-- Logic: if the first root marker is not found anywhere down to the root, it looks for the next marker after that
+	-- Configure pyright with Yandex-specific Python environment
+	-- Root markers define project boundaries for LSP analysis
 	vim.lsp.config("pyright", {
 		root_markers = {
 			"pyrightconfig.json",
