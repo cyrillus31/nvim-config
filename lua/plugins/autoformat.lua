@@ -72,10 +72,7 @@ return {
 				},
 			}
 			if ya_available then
-				opts.formatters.yaformatter = {
-					command = "ya",
-					args = { "tool", "tt", "format", "$FILENAME", "2&>/dev/null" },
-				}
+				opts.formatters.yaformatter = require("yandex.yaformatter")
 			end
 			return opts
 		end,

@@ -3,7 +3,7 @@
 -- Only loaded when the 'ya' command is available (checked in lua/plugins/yandex.lua)
 
 local lsp = require("yandex.lsp")          -- LSP configurations for Arcadia (gopls, pyright)
-local formatters = require("yandex.formatters")  -- Formatter configurations
+local formatters = require("yandex.formatters")  -- Formatter configurations (yaformatter)
 local vim_go = require("yandex.vim_go")     -- Go plugin configurations
 
 local M = {
