@@ -1,145 +1,199 @@
-# nvim-config
-My own [NeoVim](https://neovim.io/) config from ground up.
+# Neovim Configuration
 
-NVIM v0.11.2  
-Build type: RelWithDebInfo  
-LuaJIT 2.1.1744318430
-Lua 5.1
+My personal [Neovim](https://neovim.io/) configuration, built from the ground up.
 
-## How to install
+**NVIM** v0.11.2 | **LuaJIT** 2.1.1744318430 | **Lua** 5.1
 
-### Backup your current NeoVim files
+---
+
+## Installation
+
+### Quick Start
+
 ```bash
-# required
+# Backup existing config (optional but recommended)
 mv ~/.config/nvim ~/.config/nvim.bak
-
-# optional but recommended
 mv ~/.local/share/nvim{,.bak}
 mv ~/.local/state/nvim{,.bak}
 mv ~/.cache/nvim{,.bak}
-# {,.bak} is a brace expansion command which translates to the same thing
-```
 
-### Clone the repository and watch Lazy install everything
-```bash
+# Clone and install
 git clone https://github.com/cyrillus31/nvim-config.git ~/.config/nvim && nvim
 ```
 
-### Use alias to run new configuration from a different directory
+### Run Alongside Existing Config
+
 ```bash
 git clone https://github.com/cyrillus31/nvim-config.git ~/.config/new-nvim-config
-echo alias newnvim="'NVIM_APPNAME=new-nvim-config nvim'" >> ~/.bashrc
+echo "alias newnvim='NVIM_APPNAME=new-nvim-config nvim'" >> ~/.bashrc
 source ~/.bashrc
 newnvim
 ```
 
-### Test installation in a self-destructing Docker contianer with Fedora
+### Test in Docker
 
 ```bash
-source run_in_container.sh
+./run_in_container.sh
 ```
 
 ### Dependencies
-- neovim
-- git
-- ripgrep
-- fzf
-- wget
-- unzip
-- npm -> yarn *(for markdown-preview)*
 
-## Cheatsheet
-[lua_neovim_cheatsheet.md](lua_neovim_cheatsheet.md)
+| Tool | Purpose |
+|------|---------|
+| neovim | Editor |
+| git | Version control |
+| ripgrep | Fast grep (Telescope) |
+| fzf | Fuzzy finder |
+| make | Build tools (Telescope-fzf-native) |
+| npm | Package manager (markdown-preview) |
 
-### TODO
-___
+---
+
+## Features
+
+- **Plugin Management** — Lazy.nvim with auto-updates
+- **Language Servers** — LSP via nvim-lspconfig + Mason
+- **Smart Formatting** — conform.nvim with auto-format on save
+- **Fuzzy Search** — Telescope with hidden files, globs, and custom queries
+- **Syntax Highlighting** — Treesitter with context awareness
+- **Debugging** — nvim-dap for Go and Python
+- **Git Integration** — gitsigns, oil.nvim
+- **Quick Access** — Harpoon2, buffers, recent files
+- **Yandex Integration** — Arcadia-aware LSP and formatters
+
+---
+
+## Key Bindings
+
+### Navigation
+
+| Key | Action |
+|-----|--------|
+| `Ctrl+h/j/k/l` | Move between windows |
+| `Tab` / `Shift+Tab` | Next/previous tab |
+| `j` / `k` | Move by visual lines |
+| `[d` / `]d` | Previous/next diagnostic |
+
+### Search (Telescope)
+
+| Key | Action |
+|-----|--------|
+| `<leader>sh` | Help tags |
+| `<leader>sf` | Find files |
+| `<leader>sg` | Live grep |
+| `<leader>sw` | Grep word under cursor |
+| `<leader>sd` | Diagnostics |
+| `<leader>sr` | Resume last search |
+| `<leader>s.` | Recent files |
+| `<leader><leader>` | Buffers |
+| `<leader>sa` | All files (hidden) |
+| `<leader>saf` | All files |
+| `<leader>sag` | Grep all (hidden) |
+| `<leader>sq` | Grep with globs |
+
+### Files
+
+| Key | Action |
+|-----|--------|
+| `<leader>fe` | NvimTree |
+| `<leader>of` | Oil (current dir) |
+| `<leader>pv` | Oil (parent dir) |
+
+### Editing
+
+| Key | Action |
+|-----|--------|
+| `<space>sq` | Search + grep with file filters |
+| `<leader>x` | Source current file |
+| `<leader>vr` | Reload all buffers |
+| `<leader>vs` | Save all buffers |
+
+### Other
+
+| Key | Action |
+|-----|--------|
+| `<Esc>` | Clear search highlight |
+| `<space>f` | Format buffer |
+| `<space>?` | Which-key help |
+
+---
+
+## Configuration Structure
+
+```
+lua/
+├── config/           # Core settings
+│   ├── options.lua   # Neovim options
+│   ├── lazy.lua      # Plugin manager
+│   ├── keymappings.lua # Keybindings
+│   ├── autocommands.lua
+│   ├── commands.lua
+│   └── diagnostic.lua
+├── plugins/          # Plugin configurations
+├── yandex/          # Yandex/Arcadia specific
+└── extensions/      # External tools (non-Yandex)
+```
+
+---
+
+## Documentation
+
+| Document | Description |
+|----------|-------------|
+| [Configuration Guide](docs/configuration.md) | Overview of config structure |
+| [Lua Basics](docs/lua-basics.md) | Lua introduction for beginners |
+| [Neovim Cheatsheet](docs/neovim-basics.md) | Key bindings and commands |
+| [Full Cheatsheet](lua_neovim_cheatsheet.md) | Extended reference |
+
+---
+
+## Profiles
+
+The configuration supports two modes:
+
+### Default Mode
+Standard Neovim setup without Yandex tools.
+
+### Yandex Mode
+Loaded automatically when the `ya` command is available:
+- Yandex LSP configurations (gopls, pyright)
+- YaFormatter integration
+- Arcadia-aware root markers
+
+---
+
+## TODO
+
 - [x] Nvim-Treesitter
 - [x] Lazy (Package Manager)
 - [x] Status Line (Lualine or Mini)
-    - [x] [mini.statusline](https://github.com/echasnovski/mini.statusline)
-    - [x] [lualine](https://github.com/nvim-lualine/lualine.nvim)
-- [x] [Mason.nvim](https://github.com/mason-org/mason.nvim): LSP/DAP/Linter/Formatter package manager
-    - [x] [mason-lspconfig](https://github.com/mason-org/mason-lspconfig.nvim): automatically install and enable LSPs with Mason
-    - [x] [mason-null-ls](https://github.com/jay-babu/mason-null-ls.nvim): to just install formatters automatically via Mason (but configure with conform.nvim)
-    - [x] [mason-nvim-lint](https://github.com/mfussenegger/nvim-lint): to install and enable linters
-    - [x] [fidget.nvim](https://github.com/j-hui/fidget.nvim): for bottom right corner LSP status updates
-    - [x] Lua
-        - [x] folke/lazydev.nvim (make LSP knowledgeable about global 'vim' variable and so on)
-        - [x] lua_ls (lsp)
-        - [x] stylua (formatter)
-    - [x] Go
-        - [x] gopls (lsp)
-    - [x] Python
-        - [x] pyright (linter)
-    - [x] c / cpp
-        - [x] clangd
-    - [ ] js/ts (?)
-- [x] [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): repo with basic default LSP configurations
-- [x] Formatting (done by 'conform.nvim')
-    - [x] On command (<space-f>)
-    - [x] On save
-- [x] Autocompletion (<C-x><C-o> works by default omni completion)
-    - [x] [Blink.cmp](https://github.com/Saghen/blink.cmp)
-- [x] [Telescope](https://github.com/nvim-telescope/telescope.nvim)
-    - [x] Various searches + key maps
-- [x] [Harpoon (v2)](https://github.com/ThePrimeagen/harpoon/tree/harpoon2)
-- [x] Floating terminal
-    - [x] [FTerm](https://github.com/numToStr/FTerm.nvim)
-    - [ ] Optional: Custom floating terminal
-    - [x] Optional: [NvChad/nvterm](NvChad/nvterm)
-- [x] File tree manager
-    - [x] [Oil](https://github.com/stevearc/oil.nvim)
-    - [x] [NvimTree](https://github.com/nvim-tree/nvim-tree.lua)
-    - [x] [Neo-Tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
-- [x] [Markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
-- [x] DEBUGGING
-    - [x] [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
-    - [x] Go
-    - [x] Python
-    - [ ] Optional: Lua 
-- [x] [Which-key](https://github.com/folke/which-key.nvim)
+- [x] Mason.nvim: LSP/DAP/Linter/Formatter package manager
+- [x] Formatting (conform.nvim)
+- [x] Autocompletion (Blink.cmp)
+- [x] Telescope with key maps
+- [x] Harpoon (v2)
+- [x] Floating terminal (FTerm, nvterm)
+- [x] File tree managers (Oil, NvimTree, Neo-Tree)
+- [x] Markdown-preview
+- [x] Debugging (nvim-dap-ui) — Go, Python
+- [x] Which-key
 - [x] Colorschemes
-    - [x] [Nightfox](https://github.com/EdenEast/nightfox.nvim) *(the best theme)*
-    - [x] kanagawa
-    - [x] tokyonight
-    - [x] catppuccin
-    - [x] gruvbox
-    - [x] github-nvim-theme
-- [x] [autopairs](windwp/nvim-autopairs)
-- [x] [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
-- [x] [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim) indentation guidelines
-- [x] [nvim-highlight-colors](https://github.com/brenoprata10/nvim-highlight-colors) show hex values colors as inline text
-- [x] [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) autoclose **html** tags
-- [x] Quality of life keymaps (moving around splits, clipbaord, etc.)
-- [ ] Filetype plugins: 'after/ftplugin'
-    - [x] lua.lua
-    - [ ] python.lua
-    - [ ] go.lua
+- [x] Autopairs, gitsigns, indent-blankline
+- [x] Startup screen (dashboard-nvim)
+- [ ] Filetype plugins: python.lua, go.lua
 - [ ] Custom scripts
-    - [x] Visual mode multiline append
-    - [ ] Visual mode multiline prepend (not ready yet)
-- [x] Startup screen
-    - [x] [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
-    - [ ] Optional: [alpha-nvim](https://github.com/goolord/alpha-nvim)
-    - [ ] Optional: [startup-nvim](https://github.com/max397574/startup.nvim)
-
 - [ ] Implement profiles
+- [ ] Yandex integration improvements
+- [ ] Copilot / AI coding tools
 
-- [x] From kickstart.nvim
-    - [x] vim.highlight.on_yank()
-    - [x] whichkey setup
+---
 
-- [ ] Other tool ideas:
-    - [ ] Storage of custom commands devided in groups that can accessed and edited like Harpoon (for example custom several custom commands to run tests, once picked - can be edited using Vim motions)
+## Contributing
 
-- [ ] Yandex:
-    - [x] Distinguish code generated buffers
-    - [ ] Ya integration
-    - [ ] Arc integration
-    - [ ] Separate profile for plugins and so on
-    - [ ] White Space Linter \[wsl] form golangci-lint
+This is a personal configuration, but suggestions and improvements are welcome via issues or PRs.
 
-- [ ] Vide coding tools:
-    - [ ] Copilot
-    - [ ] ???
+---
 
+## Acknowledgments
+
+Based on [Kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) patterns and best practices.
