@@ -18,7 +18,51 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
-vim.keymap.set("n", "<space>x", "<cmd>source %<CR>")
+vim.keymap.set("n", "<leader>sq", function()
+	local builtin = require("telescope.builtin")
+
+	local search_pattern = vim.fn.input("Search pattern: ")
+	if search_pattern == "" then
+		return
+	end
+
+	local pos_glob = vim.fn.input("Positive glob (optional): ")
+	local neg_glob = vim.fn.input("Negative glob (optional): ")
+
+	local vimgrep_args = {
+		"rg",
+		"--color=never",
+		"--no-heading",
+		"--with-filename",
+		"--line-number",
+		"--column",
+		"--smart-case",
+		"--hidden",
+		"-L",
+	}
+
+	if pos_glob ~= "" then
+		if not pos_glob:match("[*?]") then
+			pos_glob = "*" .. pos_glob .. "*"
+		end
+		table.insert(vimgrep_args, "--glob")
+		table.insert(vimgrep_args, pos_glob)
+	end
+
+	if neg_glob ~= "" then
+		if not neg_glob:match("[*?]") then
+			neg_glob = "*" .. neg_glob .. "*"
+		end
+		table.insert(vimgrep_args, "--glob")
+		table.insert(vimgrep_args, "!" .. neg_glob)
+	end
+
+	builtin.live_grep({
+		prompt_title = string.format("Grep: %s", search_pattern),
+		default_text = search_pattern,
+		vimgrep_arguments = vimgrep_args,
+	})
+end, { desc = "[S]earch [Q]uery with globs" })
 
 --Terminal
 -- This won"t work in all terminal emulators/tmux/etc. Try your own mapping
