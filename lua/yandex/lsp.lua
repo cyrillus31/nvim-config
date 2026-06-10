@@ -8,6 +8,9 @@ local allowed_dirs = {
 
 local function is_allowed_dir()
 	local cwd = vim.loop.cwd()
+	if not cwd then
+		return false
+	end
 	for _, dir in ipairs(allowed_dirs) do
 		if vim.startswith(cwd, dir) then
 			return true
