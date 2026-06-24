@@ -2,8 +2,22 @@
 -- Configures LSP servers specifically for Yandex's Arcadia development environment
 -- Only applies when working in ~/arcadia directory
 
+local function get_arcadia_root()
+	local handle = io.popen("arc root 2>/dev/null")
+	if not handle then
+		return nil
+	end
+	local result = handle:read("*a")
+	handle:close()
+	if result and result ~= "" then
+		return result:gsub("%s+$", "")
+	end
+	return nil
+end
+
+local arcadia_root = get_arcadia_root()
 local allowed_dirs = {
-	vim.fn.expand("~/arcadia"),
+	arcadia_root or vim.fn.expand("~/arcadia"),
 }
 
 local function is_allowed_dir()
@@ -19,13 +33,13 @@ local function is_allowed_dir()
 	return false
 end
 
-if is_allowed_dir() then
+if is_allowed_dir() and arcadia_root then
 	-- Configure gopls using Yandex's 'ya tool' wrapper
 	vim.lsp.config("gopls", {
 		cmd = { "ya", "tool", "gopls", "serve" },
 		settings = {
 			gopls = {
-				arcadiaIndexDirs = { vim.fn.expand("~/arcadia/library/go") },
+				arcadiaIndexDirs = { arcadia_root .. "/library/go" },
 				expandWorkspaceToModule = false,
 			},
 		},
