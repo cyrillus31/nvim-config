@@ -46,6 +46,8 @@ newnvim
 | fzf | Fuzzy finder |
 | make | Build tools (Telescope-fzf-native) |
 | npm | Package manager (markdown-preview) |
+| python| Programming language|
+| go | Programming language |
 
 ---
 
