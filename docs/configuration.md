@@ -101,7 +101,7 @@ return {
 |--------|------|---------|
 | Telescope | `telescope.lua` | Fuzzy finder, search, grep |
 | LSP Config | `lspconfig.lua` | Language Server Protocol |
-| Treesitter | `treesitter.lua` | Syntax highlighting |
+| Treesitter | `treesitter.lua` | Syntax highlighting (nvim-treesitter `main` branch, Nvim 0.12+) |
 | Lualine | `lualine.lua` | Status line |
 | Harpoon | `harpoon2.lua` | Quick file access |
 | Oil | `oil.lua` | File browser (git operations) |

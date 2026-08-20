@@ -110,7 +110,17 @@ local dependencies = {
 	},
 
 	-- Mason
-	{ "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+	{
+		"williamboman/mason.nvim", -- NOTE: Must be loaded before dependants
+		config = function()
+			-- Make Mason-installed CLIs available to plugins that spawn them
+			-- (e.g. nvim-treesitter main branch needs `tree-sitter` to build parsers).
+			vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath("data") .. "/mason/bin"
+			require("mason").setup({
+				ensure_installed = { "tree-sitter-cli" },
+			})
+		end,
+	},
 
 	-- Mason-lspconfig (should be loaded after 'mason.nvim')
 	{ "williamboman/mason-lspconfig.nvim", dependencies = { "mason.nvim", "nvim-lspconfig" } },

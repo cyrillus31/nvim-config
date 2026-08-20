@@ -2,7 +2,7 @@
 
 My personal [Neovim](https://neovim.io/) configuration, built from the ground up.
 
-**NVIM** v0.11.2 | **LuaJIT** 2.1.1744318430 | **Lua** 5.1
+**NVIM** v0.12.4 | **LuaJIT** 2.1.1787058514 | **Lua** 5.1
 
 ---
 
@@ -46,8 +46,9 @@ newnvim
 | fzf | Fuzzy finder |
 | make | Build tools (Telescope-fzf-native) |
 | npm | Package manager (markdown-preview) |
-| python| Programming language|
+| python | Programming language |
 | go | Programming language |
+| tree-sitter-cli | Treesitter parser builds (nvim-treesitter main branch; auto-installed via Mason) |
 
 ---
 
@@ -57,7 +58,7 @@ newnvim
 - **Language Servers** — LSP via nvim-lspconfig + Mason
 - **Smart Formatting** — conform.nvim with auto-format on save
 - **Fuzzy Search** — Telescope with hidden files, globs, and custom queries
-- **Syntax Highlighting** — Treesitter with context awareness
+- **Syntax Highlighting** — Treesitter with context awareness (nvim-treesitter `main` branch)
 - **Debugging** — nvim-dap for Go and Python
 - **Git Integration** — gitsigns, oil.nvim
 - **Quick Access** — Harpoon2, buffers, recent files
