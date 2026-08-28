@@ -27,7 +27,7 @@ local different_styles = {
 return {
 	{
 		"EdenEast/nightfox.nvim",
-		enabled = true,
+		enabled = false,
 		config = function()
 			require("nightfox").setup({
 				options = {
@@ -101,7 +101,7 @@ return {
 	},
 	{
 		"ellisonleao/gruvbox.nvim",
-		enabled = false,
+		enabled = true,
 		lazy = false,
 		priority = 1000,
 		config = function()
